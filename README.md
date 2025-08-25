@@ -118,7 +118,7 @@ multi-user-chat-app/
 
 ## 📜 License
 
-MIT License © \[Your Name]
+MIT License © \[Sourav]
 
 ---
 
