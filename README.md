@@ -55,8 +55,8 @@ A **console-based chat application** built from scratch in Python using **TCP so
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/<your-username>/multi-user-chat-app.git
-cd multi-user-chat-app
+git clone https://github.com/souravangre/Multi-User-Chat-App.git
+cd Multi-User-Chat-App
 ```
 
 2. **Run the server**
