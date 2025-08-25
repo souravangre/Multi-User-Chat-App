@@ -24,6 +24,8 @@ A **console-based chat application** built from scratch in Python using **TCP so
    * Accepts incoming TCP connections.
    * Handles each client in a **separate thread**.
    * Broadcasts messages to all clients except the sender.
+     <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/73b7023c-cde5-46f5-95d1-e033ead88927" />
+
 
 2. **Client (`client.py`)**
 
