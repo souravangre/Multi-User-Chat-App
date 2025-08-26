@@ -1,126 +1,133 @@
-
 ---
 
-# 🖥 Multi-User Chat App (Python Sockets & Threading)
+# 🔗 TCP Chat App with Authentication
 
-A **console-based chat application** built from scratch in Python using **TCP sockets and threading**. This project demonstrates **low-level networking, concurrency, and client-server architecture**. Users can connect to the server, chat with multiple clients simultaneously, and have their messages identified by **usernames**.
+A simple **multi-client chat application** built using Python’s **socket programming** and **SQLite** for user authentication.
+This project demonstrates core concepts of networking (TCP/IP), concurrency (threading), and authentication without relying on external frameworks like Flask/Django.
 
 ---
 
 ## 🚀 Features
 
-* Multi-client chat in real-time.
-* Each client has a **username**.
-* Broadcast messages to **all connected clients**.
-* Join/Leave notifications when clients connect or disconnect.
-* Lightweight and easy to run locally.
+* 🔐 **User Authentication**
 
----
+  * Sign up with a username & password
+  * Login before entering the chat room
+  * Credentials securely stored in SQLite
 
-## 🏗 Architecture
+* 💬 **Single Chat Room**
 
-1. **Server (`server.py`)**
+  * Multiple clients can connect to the same server
+  * Messages broadcast to all connected users
 
-   * Accepts incoming TCP connections.
-   * Handles each client in a **separate thread**.
-   * Broadcasts messages to all clients except the sender.
-     <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/73b7023c-cde5-46f5-95d1-e033ead88927" />
+* 🧵 **Multi-threaded Server**
 
+  * Handles multiple client connections simultaneously
 
-2. **Client (`client.py`)**
+* 🛠 **Pure Python**
 
-   * Connects to the server and sends messages.
-   * Sends username and prefixes each message with it.
-   * Receives messages from other clients in **real-time**.
-   * Supports clean exit (`/quit` or `/exit`).
-
----
-
-## 🛠 Technologies Used
-
-* Python 3.x
-* `socket` library for networking
-* `threading` for handling multiple clients
-* Console-based interface (no GUI)
-
----
-
-## 📋 Prerequisites
-
-* Python 3 installed on your machine
-* Basic understanding of **terminal commands**
-
----
-
-## ⚡ Installation & Usage
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/souravangre/Multi-User-Chat-App.git
-cd Multi-User-Chat-App
-```
-
-2. **Run the server**
-
-```bash
-python server.py
-```
-
-3. **Run one or more clients** (in separate terminal windows)
-
-```bash
-python client.py
-```
-
-4. **Enter your username** when prompted.
-5. **Type messages** and press Enter to send.
-6. **Exit chat** by typing `/quit` or `/exit`.
-
----
-
-## 💡 Example Chat
-
-```
-[join] Sourav joined the chat
-Sourav: Hello everyone
-Nova: Hi Sourav!
-[leave] Nova left the chat
-```
+  * Built with only the standard library (`socket`, `threading`, `sqlite3`)
 
 ---
 
 ## 📂 Project Structure
 
 ```
-multi-user-chat-app/
-├── server.py       # Chat server
-├── client.py       # Chat client
-└── README.md       # This documentation
+Multi-User-Chat-App/
+│── authserver.py        # Main server script with auth + chat handling
+│── authclient.py        # Client script to connect and chat
+│── chat_users.db        # SQLite database for user authentication
+│── README.md            # Documentation
 ```
 
 ---
 
-## ✅ Key Learning Outcomes
+## ⚙️ How It Works
 
-* Understand **TCP sockets and networking basics**.
-* Handle **multiple clients concurrently** using Python threads.
-* Implement a **chat protocol** with usernames, join/leave notifications.
-* Build a functional **networked Python application** from scratch.
+1. **Server starts** and listens for client connections.
+2. On **client connect**, user is prompted to **login or register**.
+3. Credentials are verified/stored in the SQLite database.
+4. Once authenticated, the client joins the **shared chatroom**.
+5. Messages are **broadcasted** to all connected users.
 
 ---
 
-## 🧩 Future Enhancements
+## 🖥️ Setup & Usage
 
-* Add a **Tkinter GUI** for a desktop client.
-* Implement **private messaging** between users.
-* Convert to a **web-based chat app** using Flask + WebSockets for online access.
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/souravangre/Multi-User-Chat-App.git
+cd Multi-User-Chat-App
+```
+
+### 2. Start the server
+
+```bash
+python authserver.py
+```
+
+### 3. Run a client (open multiple terminals for multiple clients)
+
+```bash
+python authclient.py
+```
+
+### 4. Register/Login and start chatting 🎉
+
+---
+
+## 🧑‍💻 Example
+
+**Client 1:**
+
+```
+Enter choice (login/register): register
+Username: alice
+Password: ****
+[System]: alice has joined the chat
+```
+
+**Client 2:**
+
+```
+Enter choice (login/register): login
+Username: bob
+Password: ****
+[System]: bob has joined the chat
+alice: Hi Bob!
+bob: Hey Alice!
+```
+
+---
+
+## 📖 Learning Outcomes
+
+✅ Understanding of **TCP sockets**
+✅ Handling **concurrency with threads**
+✅ Implementing a **basic authentication system**
+✅ Designing without frameworks → **strong grasp of fundamentals**
+
+---
+
+## 🔮 Future Enhancements
+
+* Multiple chat rooms / private chats
+* End-to-end encryption for messages
+* GUI client with Tkinter or PyQt
+* Admin commands (kick/ban users)
+
+---
+
+## 🤝 Contribution
+
+Feel free to fork, raise issues, or submit PRs if you’d like to enhance the project!
 
 ---
 
 ## 📜 License
 
-MIT License © \[Sourav]
+MIT License – free to use and modify.
 
 ---
 
